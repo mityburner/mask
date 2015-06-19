@@ -1,81 +1,91 @@
 <!DOCTYPE>
 <html>
+
 <head>
-	<meta charset="utf8">
-	<link rel="stylesheet" href="css/css.css">
-	<title>learn git</title>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="css/css.css">
+    <title>learn git</title>
 </head>
+
 <body>
-<h2>添加账户信息</h2>
-<pre>git config --global user.name "mityburner"
-<br>git config --global user.email "mityburner@gmail.com"</pre>
+    <h2>添加账户信息</h2>
+    <pre>
+git config --global user.name "mityburner"
+git config --global user.email "mityburner@gmail.com"
+</pre>
 
-<h2>添加仓库</h2>
-<pre>mkdir mask
-<br>cd mask</pre>
+    <h2>添加仓库</h2>
+    <pre>
+mkdir mask
+cd mask</pre>
 
-<h2>初始化仓库</h2>
-<pre>git init</pre>
+    <h2>初始化仓库</h2>
+    <pre>git init</pre>
 
-<h2>将文件添加到git的索引中</h2>
-<pre>git add index.html</pre>
+    <h2>将文件添加到git的索引中</h2>
+    <pre>git add index.html</pre>
 
-<h2>提交文件并附上文件说明</h2>
-<pre>git commit -m "create index.html"</pre>
+    <h2>提交文件并附上文件说明</h2>
+    <pre>git commit -m "create index.html"</pre>
 
-<h2>查看仓库状态</h2>
-<pre>git status</pre>
+    <h2>查看仓库状态</h2>
+    <pre>git status</pre>
 
-<h2>查看文件修改记录</h2>
-<pre>git diff</pre>
+    <h2>查看文件修改记录</h2>
+    <pre>git diff</pre>
 
-<h2>查看文件提交记录</h2>
-<pre>git log  --pretty=oneline</pre>
+    <h2>查看文件提交记录</h2>
+    <pre>git log  --pretty=oneline</pre>
 
-<h2>版本回退一</h2>
-<p>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写成HEAD~100。</p>
-<pre>git reset --hard HEAD^</pre>
+    <h2>版本回退一</h2>
+    <p>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写成HEAD~100。</p>
+    <pre>git reset --hard HEAD^</pre>
 
-<h2>版本回退二</h2>
-<p>通过git log查找版本ID号，用ID号进行回退。只要输入开头的三四个字符便可，git会去找。</p>
-<pre>git reset --hard 3425</pre>
+    <h2>版本回退二</h2>
+    <p>通过git log查找版本ID号，用ID号进行回退。只要输入开头的三四个字符便可，git会去找。</p>
+    <pre>git reset --hard 3425</pre>
 
-<h2>后悔做了回退，想要最新的版本</h2>
-<p>通过git reflog查看每次操作的记录，找到相应版本的ID号，通过ID退到指定版本</p>
-<pre>git reflog</pre>
+    <h2>后悔做了回退，想要最新的版本</h2>
+    <p>通过git reflog查看每次操作的记录，找到相应版本的ID号，通过ID退到指定版本</p>
+    <pre>git reflog</pre>
 
-<h2>工作区和暂存区</h2>
-<p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
-<pre>git status</pre>
+    <h2>工作区和暂存区</h2>
+    <p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
+    <pre>git status</pre>
 
-<h2>管理修改</h2>
-<p>查看工作区和版本库里最新版的区别</p>
-<pre>git diff HEAD -- index.html</pre>
+    <h2>管理修改</h2>
+    <p>查看工作区和版本库里最新版的区别</p>
+    <pre>git diff HEAD -- index.html</pre>
 
-<h2>撤销修改一</h2>
-<p>撤销工作区对文件做的修改</p>
-<pre>git checkout --index.html</pre>
+    <h2>撤销修改一</h2>
+    <p>撤销工作区对文件做的修改</p>
+    <pre>git checkout --index.html</pre>
 
-<h2>撤销修改二</h2>
-<p>撤销暂存区对文件做的修改，HEAD表示当前版本</p>
-<pre>git reset HEAD index.html</pre>
+    <h2>撤销修改二</h2>
+    <p>撤销暂存区对文件做的修改，HEAD表示当前版本</p>
+    <pre>git reset HEAD index.html</pre>
 
-<h2>撤销修改三</h2>
-<p>撤销提交，回到暂存区【此处一定要用soft，不能用hard和mixed，默认是mixed,因为他们会把暂存区和工作区的修改全部抹去】</p>
-<pre>git reset --soft HEAD^</pre>
+    <h2>撤销修改三</h2>
+    <p>撤销提交，回到暂存区【此处一定要用soft，不能用hard和mixed，默认是mixed,因为他们会把暂存区和工作区的修改全部抹去】</p>
+    <pre>git reset --soft HEAD^</pre>
 
-<p>在刚提交的版本上做修改，进行补救，不用add直接commit</p>
-<pre>git commit --amend</pre>
+    <p>在刚提交的版本上做修改，进行补救，不用add直接commit</p>
+    <pre>git commit --amend</pre>
 
 
-<p>撤销提交，回到上一个版本</p>
-<pre>git commit --amend</pre>
+    <p>撤销提交，回到上一个版本</p>
+    <pre>git reset --hard HEAD^</pre>
 
-<abbr title="">为什么git reset 和git revert的效果是一样的</abbr>
 
-<h2>删除文件</h2>
-<pre>git status</pre>
-
+    <h2>删除文件</h2>
+    <p>保留版本库中的文件,【通过 git checkout -- file】</p>
+    <pre>rm del</pre>
+    <p>不保留版本库中的文件</p>
+    <pre>rm del
+git rm del
+gt commit -m "del file"
+</pre>
 
 </body>
+
 </html>
